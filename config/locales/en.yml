@@ -3,4 +3,4 @@
 
 en:
   hello: "Hello world"
-  precompile_assets: true
+  precompile_assets: false
