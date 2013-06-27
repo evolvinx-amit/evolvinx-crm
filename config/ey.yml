@@ -27,6 +27,7 @@
 ---
 environments:
   evolvinxdemo:
+     migrate: false
      maintenance_on_migrate: false
 defaults:
   migrate: true
