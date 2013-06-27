@@ -31,3 +31,6 @@ defaults:
   migrate: true
   migration_command: n
   precompile_assets: true
+  environments:
+  env_name:
+    maintenance_on_migrate: false
