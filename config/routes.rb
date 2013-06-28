@@ -1,6 +1,10 @@
 EvolvinxCrm::Application.routes.draw do
-  root :to => "users#index"
-  get "users/index"
+  root :to => "users#login"
+  resources :users
+
+  match '/login' => 'users#login', :as => :login
+  match '/home' => 'users#index', :as => :index
+  match '/logout' => 'users#logout', :as => :logout
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
