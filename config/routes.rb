@@ -1,10 +1,21 @@
 EvolvinxCrm::Application.routes.draw do
-  root :to => "users#login"
-  resources :users
+  get "home/index"
 
-  match '/login' => 'users#login', :as => :login
-  match '/home' => 'users#index', :as => :index
-  match '/logout' => 'users#logout', :as => :logout
+  root :to => 'user_sessions#new'
+
+   resources :users do
+    collection do
+      put :edit_profile
+      put :update_profile
+      put :register
+    end
+  end
+
+  resources :user_sessions
+  match '/login' => 'user_sessions#new', :as => :login
+  match '/logout' => 'user_sessions#destroy', :as => :logout
+  match '/register' => 'users#register', :as => :register
+  match 'profile/:id' => 'users#edit_profile', :as => :my_account
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

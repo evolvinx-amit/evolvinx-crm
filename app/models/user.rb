@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
     :role_id, :notes
 
   # Validations for Users
-  validates_presence_of :name, :username, :email
+  validates_presence_of :name, :username, :email, :role_id
   validates_format_of  :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
   before_create :new_user
 

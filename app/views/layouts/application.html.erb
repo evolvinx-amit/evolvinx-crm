@@ -7,11 +7,11 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%= render 'layouts/header' %>
+
     <div id="wrap">
       <div class="container">
         <div class="row">
-
+          <%= render 'layouts/header' %>
           <%= render 'layouts/navbar' %>
 
           <% flash.each do |name, msg| %>
@@ -20,7 +20,6 @@
             </div>
           <% end %>
           <%= yield %>
-
         </div>
       </div>
     </div>
