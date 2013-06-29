@@ -4,7 +4,7 @@ $.fn.doCreateUser = function(){
     widget = $('#createUser');
     $(".alert, .progress, #new_user", widget).hide();
     $(".progress", widget).show();
-    $.post('ajaxPlans/ajaxtotalcarbohydrate/?date=', form.serialize(), function(data){
+    $.post('../users', form.serialize(), function(data){
         $(".alert, .progress", widget).hide();
         if(data.success){
             $(".alert", widget)
@@ -12,6 +12,7 @@ $.fn.doCreateUser = function(){
             .addClass('alert-success')
             .html(data.message)
             .show();
+            $("#new_user", widget).show();
         } else {
             var $ul = $('<ul/>');
             $ul.addClass('error');

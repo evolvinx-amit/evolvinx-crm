@@ -3,7 +3,7 @@
     <div class="navbar-inner">
       <div class="container">
         <ul class="nav">
-          <li class="active"><%= link_to "Home", home_index_path %></li>
+          <li class="<%= 'active' if current_page?(home_index_path) %>"><%= link_to "Home", home_index_path %></li>
           <li><a href="#">Dashboard</a></li>
           <li><a href="#">Leads</a></li>
           <li><a href="#">Contacts</a></li>
@@ -12,24 +12,21 @@
             <li><a href="#">Opportunities</a></li>
             <li><a href="#">Contracts</a></li>
           <% end %>
-
-          <li class="dropdown" id="settingsmenu">
+          <li id="settingsmenu" class="dropdown <%= 'active' if current_page?(users_path) || current_page?(new_user_path) %>">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Settings<b class="caret"></b></a>
             <ul class="dropdown-menu pull-right">
               <li><a href="#">Edit Profile</a></li>
               <li><a href="#">Change Password</a></li>
               <% if(session[:userrole].present? && session[:userrole] == 1) %>
-                <li><a href="#">Users List</a></li>
-                <li><%= link_to "Create User", new_user_path %></li>
+                <li class="<%= 'active' if current_page?(users_path) %>"><%= link_to "Users List", users_path %></li>
+                <li class="<%= 'active' if current_page?(new_user_path) %>"><%= link_to "Create User", new_user_path %></li>
               <% end %>
               <li class="divider"></li>
               <li><%= link_to "Logout", logout_path %></li>
             </ul>
           </li>
-
         </ul>
       </div>
     </div>
   </div>
-
 <% end %>

@@ -8,7 +8,7 @@
           Error!
       </div>
   </div>
-  <%= simple_form_for @user, :html => { :class => "form-horizontal", :onsubmit => "return false;"} do |f| %>
+  <%= simple_form_for @user, :remote=>true, :html => { :class => "form-horizontal", :onsubmit => "return false;"}  do |f| %>
   <legend>New User</legend>
     <div class="span5">
       <%= f.input :username, :label => (t "user.username") %>

@@ -2,10 +2,10 @@ class UserSessionsController < ApplicationController
   def new
     if(request.post?) then
         @_userName = params[:username]
-        @_password = params[:password]
+        @_password =  Digest::MD5.hexdigest(params[:password])
         @find = User.where("username = ? AND password = ?", @_userName, @_password)
         if @find.empty?
-          flash[:notice] = 'Login credential errors'
+          flash[:error] = 'Login credential errors'
           redirect_to(root_path)
         else
           @find = User.where("username = ? AND password = ?", @_userName, @_password).first

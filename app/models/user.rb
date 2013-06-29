@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   # Validations for Users
   validates_presence_of :name, :username, :email, :role_id
   validates_format_of  :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+  validates_uniqueness_of :username, :email
+  validates_length_of :password, :minimum  => 6
   before_create :new_user
 
   # Used to set New Users defaults
