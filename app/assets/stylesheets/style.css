@@ -1,3 +1,15 @@
 .error{
     color: #FF0000;
 }
+
+.tab-title{
+    width: 500px;
+    float: left;
+    font-size: 20px;
+    font-weight: bold;
+}
+.create-new-title{
+    width: 200px;
+    float: right;
+    text-align: right;
+}

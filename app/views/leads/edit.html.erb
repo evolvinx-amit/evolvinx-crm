@@ -1,0 +1,38 @@
+<div class="span12" id="editLead">
+  <div id="ajaxHandler">
+      <div id="crmAjaxProgress" class="progress progress-striped active" style="display: none;">
+          <div class="bar" style="width: 100%;"></div>
+      </div>
+      <div id="crmAjaxMessage" class="alert" style="display: none;">
+          Error!
+      </div>
+  </div>
+  <%= simple_form_for @lead, :html => {:class => "form-horizontal"}  do |f| %>
+  <legend>New Lead</legend>
+    <div class="span5">
+      <%= f.input :title, :collection =>[["Select",""],["Mr","Mr"],["Mrs","Mrs"]], :selected => @lead.title %>
+      <%= f.input :firstname, :label => (t "lead.firstname") %>
+      <%= f.input :lastname, :label =>(t "lead.lastname") %>
+      <%= f.input :company, :label =>(t "lead.company") %>
+      <%= f.input :status, :collection =>[["Contacted","Contacted"],["Open","Open"],["Qualified","Qualified"],["Unqualified","Unqualified"]], :selected => @lead.status %>
+      <%= f.input :phone, :label =>(t "lead.phone") %>
+      <%= f.input :email, :label =>(t "lead.email") %>
+      <%= f.input :ratting, :collection =>[["Select",""],["Hot","Hot"],["Warm","Warm"],["Cold","Cold"]], :selected => @lead.ratting %>
+    </div>
+    <div class="span5">
+      <%= f.input :street, :as => :text, :input_html => { :cols => 50, :rows => 3 } %>
+      <%= f.input :city, :label =>(t "lead.city") %>
+      <%= f.input :state, :label =>(t "lead.state") %>
+      <%= f.input :zip, :label =>(t "lead.zip") %>
+      <%= f.input :annual_revenue, :label =>(t "lead.annual_revenue") %>
+      <%= f.input :employee_no, :label =>(t "lead.no_of_employee") %>
+      <%= f.input :lead_source, :label =>(t "lead.lead_source") %>
+      <%= f.input :description, :as => :text, :input_html => { :cols => 50, :rows => 3 } %>
+    </div>
+    <div class="form-actions span10" style="margin-left: 0px; width: 970px;">
+      <%= f.submit nil, :class => "btn btn-primary" %>
+      <a class="btn btn-small" href="<%= lead_path(:id => @lead.id) %>">Cancel</a>
+    </div>
+
+  <% end %>
+</div>

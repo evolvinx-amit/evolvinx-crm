@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   before_filter :check_if_login
   def new
     @user = User.new
-    @roles = Role.find(:all)
   end
 
   def index

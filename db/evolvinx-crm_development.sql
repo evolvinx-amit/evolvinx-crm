@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 29, 2013 at 04:20 PM
+-- Generation Time: Jun 30, 2013 at 04:43 PM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -19,6 +19,88 @@ SET time_zone = "+00:00";
 --
 -- Database: `evolvinx-crm_development`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contacts`
+--
+
+CREATE TABLE IF NOT EXISTS `contacts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(255) DEFAULT NULL,
+  `lastname` varchar(255) NOT NULL,
+  `title` varchar(50) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `email` varchar(255) NOT NULL,
+  `acoount` int(11) DEFAULT NULL,
+  `position` varchar(255) DEFAULT NULL,
+  `m_street` varchar(255) DEFAULT NULL,
+  `m_city` varchar(255) DEFAULT NULL,
+  `m_state` varchar(255) DEFAULT NULL,
+  `m_zip` varchar(255) DEFAULT NULL,
+  `m_country` varchar(255) DEFAULT NULL,
+  `o_street` varchar(255) DEFAULT NULL,
+  `o_city` varchar(255) DEFAULT NULL,
+  `o_state` varchar(255) DEFAULT NULL,
+  `o_zip` varchar(255) DEFAULT NULL,
+  `o_country` varchar(255) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_by` int(11) DEFAULT NULL,
+  `owner` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `firstname`, `lastname`, `title`, `status`, `phone`, `email`, `acoount`, `position`, `m_street`, `m_city`, `m_state`, `m_zip`, `m_country`, `o_street`, `o_city`, `o_state`, `o_zip`, `o_country`, `created_at`, `created_by`, `updated_at`, `updated_by`, `owner`) VALUES
+(1, NULL, 'aaaa', NULL, NULL, NULL, 'amit@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2013-06-30 14:39:56', NULL, '2013-06-30 08:39:56', NULL, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `leads`
+--
+
+CREATE TABLE IF NOT EXISTS `leads` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(255) DEFAULT NULL,
+  `lastname` varchar(255) NOT NULL,
+  `title` varchar(50) DEFAULT NULL,
+  `company` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `email` varchar(255) NOT NULL,
+  `ratting` varchar(255) DEFAULT NULL,
+  `website` varchar(255) DEFAULT NULL,
+  `street` varchar(255) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `state` varchar(255) DEFAULT NULL,
+  `zip` varchar(255) DEFAULT NULL,
+  `country` varchar(255) DEFAULT NULL,
+  `annual_revenue` double DEFAULT NULL,
+  `employee_no` int(32) DEFAULT NULL,
+  `lead_source` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `owner` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `leads`
+--
+
+INSERT INTO `leads` (`id`, `firstname`, `lastname`, `title`, `company`, `status`, `phone`, `email`, `ratting`, `website`, `street`, `city`, `state`, `zip`, `country`, `annual_revenue`, `employee_no`, `lead_source`, `description`, `created_at`, `updated_at`, `created_by`, `updated_by`, `owner`) VALUES
+(4, 'Amit', 'Kumar Paul', 'Mr', 'Phase3solution', 'Qualified', '01721322184', 'amit@phase3solution.com', 'Hot', NULL, '9/1', 'Dhaka', 'Mirpur', '1207', NULL, 100000, 15, 'Meeting', 'Very nice person', '2013-06-30 11:11:42', '2013-06-30 08:43:08', NULL, NULL, 1);
 
 -- --------------------------------------------------------
 

@@ -1,0 +1,181 @@
+    <div id="contact_info">
+      <h3>Lead Details</h3>
+      <table>
+        <tr>
+          <td colspan="2" align="right">
+            <strong><%= t "lead.title" %>:</strong>
+          </td>
+          <td align="left">
+            <% if @lead.title.strip != "" %>
+              <%= @lead.title %>
+            <% else %>
+              N/A
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="right">
+            <strong><%= t "lead.first_name" %>:</strong>
+          </td>
+          <td align="left">
+            <% if @lead.firstname.strip != "" %>
+              <%= @lead.firstname %>
+            <% else %>
+              N/A
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="right">
+            <strong><%= t "lead.last_name" %>:</strong>
+          </td>
+          <td align="left">
+            <%= @lead.lastname %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="right">
+            <strong><%= t "lead.company" %>:</strong>
+          </td>
+          <td align="left">
+            <% if @lead.company.strip != "" %>
+              <%= @lead.company %>
+            <% else %>
+              N/A
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="right">
+            <strong><%= t "lead.status" %>:</strong>
+          </td>
+          <td align="left">
+            <%= @lead.status %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="right">
+            <strong><%= t "lead.phone" %>:</strong>
+          </td>
+          <td align="left">
+            <% if @lead.phone.strip != "" %>
+              <%= @lead.phone %>
+            <% else %>
+              N/A
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="right">
+            <strong><%= t "lead.email" %>:</strong>
+          </td>
+          <td align="left">
+            <%= @lead.email %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="right">
+            <strong><%= t "lead.ratting" %>:</strong>
+          </td>
+          <td align="left">
+            <% if @lead.ratting.strip != "" %>
+              <%= @lead.ratting %>
+            <% else %>
+              N/A
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="right">
+            <strong><%= t "lead.address" %>:</strong>
+          </td>
+          <td align="left">
+             <% if @lead.street.strip != "" %>
+                <%= @lead.street %>
+             <% end %>
+             <% if @lead.city.strip != "" %>
+                <%= @lead.city %>
+             <% end %>
+             <% if @lead.state.strip != "" %>
+                <%= @lead.state %>
+             <% end %>
+             <% if @lead.zip.strip != "" %>
+                <%= @lead.zip %>
+             <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="right">
+            <strong><%= t "lead.annual_revenue" %>:</strong>
+          </td>
+          <td align="left">
+            <%= @lead.annual_revenue %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="right">
+            <strong><%= t "lead.employee_no" %>:</strong>
+          </td>
+          <td align="left">
+            <%= @lead.employee_no %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="right">
+            <strong><%= t "lead.lead_source" %>:</strong>
+          </td>
+          <td align="left">
+            <% if @lead.lead_source.strip != "" %>
+              <%= @lead.lead_source %>
+            <% else %>
+              N/A
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="right">
+            <strong><%= t "lead.description" %>:</strong>
+          </td>
+          <td align="left">
+            <% if @lead.description.strip != "" %>
+              <%= @lead.description %>
+            <% else %>
+              N/A
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="right">
+            <strong><%= t "lead.created_at" %>:</strong>
+          </td>
+          <td align="left">
+            <%= @lead.created_at.to_formatted_s(:db) %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="right">
+            <strong><%= t "lead.last_updated_at" %>:</strong>
+          </td>
+          <td align="left">
+            <%= @lead.updated_at.to_formatted_s(:db) %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="right">
+            <strong><%= t "lead.owner" %>:</strong>
+          </td>
+          <td align="left">
+            <%= @lead.user.username %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <a class="btn btn-small" href="<%= edit_lead_path(:id => @lead.id) %>">Edit</a>
+            <%= link_to 'Delete', @lead,:confirm => 'Are you sure?', :method => :delete, :class => "btn btn-small"%>
+            <a class="btn btn-small" href="<%= leads_path %>">Cancel</a>
+          </td>
+        </tr>
+      </table>
+</div>
+<div class="clear"></div>
+

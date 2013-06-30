@@ -5,7 +5,11 @@
         <ul class="nav">
           <li class="<%= 'active' if current_page?(home_index_path) %>"><%= link_to "Home", home_index_path %></li>
           <li><a href="#">Dashboard</a></li>
-          <li><a href="#">Leads</a></li>
+          <li class="<%= 'active' if current_page?(leads_path) ||
+                                    current_page?(new_lead_path)
+                      %>">
+              <%= link_to "Lead", leads_path %>
+          </li>
           <li><a href="#">Contacts</a></li>
           <li><a href="#">Accounts</a></li>
           <% if(session[:userrole].present? && session[:userrole] != 3) %>

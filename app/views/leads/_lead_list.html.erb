@@ -1,0 +1,58 @@
+<div class="row-fluid">
+  <div class="span12">
+    <p class="tab-title">All Leads</p>
+    <p class="create-new-title"><%= link_to "Create new lead", new_lead_path %></p>
+    <table class="table table-bordered table-hover table table-condensed">
+      <thead>
+        <tr>
+          <th><%= t "lead.id" %></th>
+          <th><%= (t "lead.title") %></th>
+          <th><%= (t "lead.first_name") %></th>
+          <th><%= (t "lead.last_name") %></th>
+          <th><%= (t "lead.email") %></th>
+          <th><%= (t "lead.phone") %></th>
+          <th><%= (t "lead.status") %></th>
+          <th colspan="2"><%= (t "lead.owner") %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for lead in @leads do %>
+            <tr class="<%= cycle :odd, :even %>">
+              <td><%= lead.id %></td>
+              <td style="text-transform:capitalize;">
+                <% if lead.title.strip != "" %>
+                  <%= lead.title.strip %>
+                <% else %>
+                  N/A
+                <% end %>
+              </td>
+              <td>
+                <% if lead.firstname.strip != "" %>
+                  <%= lead.firstname.strip %>
+                <% else %>
+                  N/A
+                <% end %>
+              </td>
+              <td><%= lead.lastname.strip %></td>
+              <td><%= lead.email.strip %></td>
+              <td>
+                <% if lead.phone.strip != "" %>
+                  <%= lead.phone.strip %>
+                <% else %>
+                  N/A
+                <% end %>
+              </td>
+              <td style="text-transform:capitalize;"><%= lead.status.strip %></td>
+              <td style="text-transform:capitalize;"><%= lead.user.username %></td>
+              <td style="width: 275px;">
+                <a class="btn btn-small" href="<%= lead_path(:id => lead.id) %>">Details</a>
+                <a class="btn btn-small" href="<%= edit_lead_path(:id => lead.id) %>">Edit</a>
+                <a class="btn btn-small" href="<%= convert_lead_path(:id => lead.id) %>">Convert Lead</a>
+                <%= link_to 'Delete', lead,:confirm => 'Are you sure?', :method => :delete, :class => "btn btn-small"%>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
