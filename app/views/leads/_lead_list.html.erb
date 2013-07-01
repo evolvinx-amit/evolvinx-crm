@@ -9,6 +9,7 @@
           <th><%= (t "lead.title") %></th>
           <th><%= (t "lead.first_name") %></th>
           <th><%= (t "lead.last_name") %></th>
+          <th><%= (t "lead.company") %></th>
           <th><%= (t "lead.email") %></th>
           <th><%= (t "lead.phone") %></th>
           <th><%= (t "lead.status") %></th>
@@ -34,6 +35,13 @@
                 <% end %>
               </td>
               <td><%= lead.lastname.strip %></td>
+              <td>
+                <% if lead.company.strip != "" %>
+                  <%= lead.company.strip %>
+                <% else %>
+                  N/A
+                <% end %>
+              </td>
               <td><%= lead.email.strip %></td>
               <td>
                 <% if lead.phone.strip != "" %>

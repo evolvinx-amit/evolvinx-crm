@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
-  has_many :leads
+  has_many :lead
   has_many :contact
+  has_many :account
   belongs_to :role
   # Mass Assignment Protection
   attr_accessible :name, :address, :city, :username, :email, :phone, :state, :zip, :mobile, :fax, :password,

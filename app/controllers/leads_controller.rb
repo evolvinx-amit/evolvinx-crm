@@ -6,11 +6,11 @@ class LeadsController < ApplicationController
   end
 
   def index
-      @leads = Lead.find(:all)
-      respond_to do |format|
-        format.html
-        format.js
-      end
+    @leads = Lead.find(:all, :conditions => [ "status = ?", "Open" ])
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create
@@ -65,14 +65,67 @@ class LeadsController < ApplicationController
   end
 
   def convert_lead
-    @lead = Lead.find(params[:id])
-    @contact = Contact.new
-    @contact.email = "amit@gmail.com"
-    @contact.lastname = "aaaa"
-    @contact.owner = 1
-    @contact.save
+    begin
+      @lead = Lead.find(params[:id])
+      @find = Account.where("account_name = ?", @lead.company)
+      if @find.empty?
+        @account = Account.new
+        @account.account_name = @lead.company
+        @account.status = 1
+        @account.phone = @lead.phone
+        @account.website = @lead.website
+        @account.annual_revenue = @lead.annual_revenue
+        @account.employees = @lead.employee_no
+        @account.description = @lead.description
+        @account.b_street = @lead.street
+        @account.b_city = @lead.city
+        @account.b_state = @lead.state
+        @account.b_zip = @lead.zip
+        @account.b_country = @lead.country
+        @account.owner = @lead.owner
+        if @account.save
+          @accountId = @account.id
+        else
+          flash[:error] = @account.errors.full_messages.to_sentence
+        end
+      else
+        @find = Account.where("account_name = ?", @lead.company).first
+        @accountId = @find.id
+      end
+      @contact = Contact.new
+      @contact.firstname = @lead.firstname
+      @contact.lastname = @lead.lastname
+      @contact.title = @lead.title
+      @contact.status = 1
+      @contact.account_name = @accountId
+      @contact.phone = @lead.phone
+      @contact.email = @lead.email
+      @contact.m_street = @lead.street
+      @contact.m_city = @lead.city
+      @contact.m_state = @lead.state
+      @contact.m_zip = @lead.zip
+      @contact.m_country = @lead.country
+      @contact.owner = @lead.owner
+
+      if @contact.save
+        @lead.update_attribute(:status, "Qualified")
+        flash[:notice] = "Lead converted successfully!"
+      else
+        flash[:error] = @contact.errors.full_messages.to_sentence
+      end
+      respond_to do |format|
+        format.html { redirect_to(leads_path) }
+      end
+    rescue =>e
+      respond_to do |format|
+        flash[:error] = e.message
+        format.html { redirect_to(leads_path) }
+      end
+    end
   end
 
+
+  
   protected
   def check_if_login
     if session[:userrole].present?

@@ -3,6 +3,8 @@ EvolvinxCrm::Application.routes.draw do
 
   resources :home
   resources :users
+  resources :contacts
+  resources :accounts
 
   resources :leads do
     collection do

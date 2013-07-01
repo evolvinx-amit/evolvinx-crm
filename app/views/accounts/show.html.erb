@@ -1,0 +1,205 @@
+<div id="contact_info">
+  <h3>Account Details</h3>
+  <table>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "account.account_name" %>:</strong>
+      </td>
+      <td align="left" style="text-transform: capitalize;">
+        <%= @account.account_name %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "account.phone" %>:</strong>
+      </td>
+      <td align="left">
+        <% if @account.phone.nil? %>
+          N/A
+        <% else %>
+          <%= @account.phone %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "account.fax" %>:</strong>
+      </td>
+      <td align="left">
+        <% if @account.fax.nil? %>
+          N/A
+        <% else %>
+          <%= @account.fax %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "account.website" %>:</strong>
+      </td>
+      <td align="left">
+        <% if @account.website.nil? %>
+          N/A
+        <% else %>
+          <%= @account.website %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "account.client_discount" %>:</strong>
+      </td>
+      <td align="left">
+        <% if @account.discount.nil? %>
+          N/A
+        <% else %>
+          <%= @account.discount %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "account.type" %>:</strong>
+      </td>
+      <td align="left">
+        <% if @account.type.nil? %>
+          N/A
+        <% else %>
+          <%= @account.type %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "account.industry" %>:</strong>
+      </td>
+      <td align="left">
+        <% if @account.industry.nil? %>
+          N/A
+        <% else %>
+          <%= @account.industry %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "account.employees" %>:</strong>
+      </td>
+      <td align="left">
+        <% if @account.employees.nil? %>
+          N/A
+        <% else %>
+          <%= @account.employees %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "account.annual_revenue" %>:</strong>
+      </td>
+      <td align="left">
+        <% if @account.annual_revenue.nil? %>
+          N/A
+        <% else %>
+          <%= @account.annual_revenue %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "account.description" %>:</strong>
+      </td>
+      <td align="left">
+        <% if @account.description.nil? %>
+          N/A
+        <% else %>
+          <%= @account.description %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "account.status" %>:</strong>
+      </td>
+      <td align="left">
+        <% if @account.status == 1 %>
+          Active
+        <% else %>
+          Inactive
+        <% end %>
+      </td>
+    </tr>
+    
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "account.business_address" %>:</strong>
+      </td>
+      <td align="left">
+         <% if !@account.b_street.nil?  %>
+            <%= @account.b_street %>
+         <% end %>
+         <% if !@account.b_city.nil? %>
+            <%= @account.b_city %>
+         <% end %>
+         <% if !@account.b_state.nil? %>
+            <%= @account.b_state %>
+         <% end %>
+         <% if !@account.b_zip.nil? %>
+            <%= @account.b_zip %>
+         <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "account.shipping_address" %>:</strong>
+      </td>
+      <td align="left">
+         <% if !@account.s_street.nil? %>
+            <%= @account.s_street %>
+         <% end %>
+         <% if !@account.s_city.nil? %>
+            <%= @account.s_city %>
+         <% end %>
+         <% if !@account.s_state.nil? %>
+            <%= @account.s_state %>
+         <% end %>
+         <% if !@account.s_zip.nil? %>
+            <%= @account.s_zip %>
+         <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "account.created_at" %>:</strong>
+      </td>
+      <td align="left">
+        <%= @account.created_at.to_formatted_s(:db) %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "account.updated_at" %>:</strong>
+      </td>
+      <td align="left">
+        <%= @account.updated_at.to_formatted_s(:db) %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "account.owner" %>:</strong>
+      </td>
+      <td align="left">
+        <%= @account.user.username %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <a class="btn btn-small" href="<%= edit_account_path(:id => @account.id) %>">Edit</a>
+        <%= link_to 'Delete', @account,:confirm => 'Are you sure?', :method => :delete, :class => "btn btn-small"%>
+        <a class="btn btn-small" href="<%= accounts_path %>">Cancel</a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="clear"></div>
+

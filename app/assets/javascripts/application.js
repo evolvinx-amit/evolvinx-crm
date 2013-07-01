@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-1.8.2.min
 //= require bootstrap
 //= require bootstrap.min
 //= require bootstrap-datepicker

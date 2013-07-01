@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 30, 2013 at 04:43 PM
+-- Generation Time: Jul 01, 2013 at 03:45 PM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -23,6 +23,52 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `accounts`
+--
+
+CREATE TABLE IF NOT EXISTS `accounts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `account_name` varchar(255) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `fax` varchar(255) DEFAULT NULL,
+  `website` varchar(255) DEFAULT NULL,
+  `discount` float DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `industry` varchar(255) DEFAULT NULL,
+  `employees` int(11) DEFAULT NULL,
+  `annual_revenue` float DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `b_street` varchar(255) DEFAULT NULL,
+  `b_city` varchar(255) DEFAULT NULL,
+  `b_state` varchar(255) DEFAULT NULL,
+  `b_zip` varchar(255) DEFAULT NULL,
+  `b_country` varchar(255) DEFAULT NULL,
+  `s_street` varchar(255) DEFAULT NULL,
+  `s_city` varchar(255) DEFAULT NULL,
+  `s_state` varchar(255) DEFAULT NULL,
+  `s_zip` varchar(255) DEFAULT NULL,
+  `s_country` varchar(255) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_by` int(11) DEFAULT NULL,
+  `owner` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `accounts`
+--
+
+INSERT INTO `accounts` (`id`, `account_name`, `status`, `phone`, `fax`, `website`, `discount`, `type`, `industry`, `employees`, `annual_revenue`, `description`, `b_street`, `b_city`, `b_state`, `b_zip`, `b_country`, `s_street`, `s_city`, `s_state`, `s_zip`, `s_country`, `created_at`, `created_by`, `updated_at`, `updated_by`, `owner`) VALUES
+(1, 'Phase3solution1', 1, '01721322184', NULL, NULL, NULL, NULL, NULL, 15, 100000, 'Very nice person', '9/1', 'Dhaka', 'Mirpur', '1207', NULL, NULL, NULL, NULL, NULL, NULL, '2013-07-01 10:27:25', NULL, '2013-07-01 04:27:25', NULL, 1),
+(2, 'ssss', 1, '', '', '', NULL, '', '', NULL, 111, '', '', '', '', '', NULL, '', '', '', '', NULL, '2013-07-01 10:58:41', NULL, '2013-07-01 07:41:00', NULL, 1),
+(3, 'asdas', 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '2013-07-01 13:42:52', NULL, '2013-07-01 07:42:52', NULL, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `contacts`
 --
 
@@ -34,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `contacts` (
   `status` int(11) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
   `email` varchar(255) NOT NULL,
-  `acoount` int(11) DEFAULT NULL,
+  `account_name` int(11) DEFAULT NULL,
   `position` varchar(255) DEFAULT NULL,
   `m_street` varchar(255) DEFAULT NULL,
   `m_city` varchar(255) DEFAULT NULL,
@@ -52,14 +98,17 @@ CREATE TABLE IF NOT EXISTS `contacts` (
   `updated_by` int(11) DEFAULT NULL,
   `owner` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `contacts`
 --
 
-INSERT INTO `contacts` (`id`, `firstname`, `lastname`, `title`, `status`, `phone`, `email`, `acoount`, `position`, `m_street`, `m_city`, `m_state`, `m_zip`, `m_country`, `o_street`, `o_city`, `o_state`, `o_zip`, `o_country`, `created_at`, `created_by`, `updated_at`, `updated_by`, `owner`) VALUES
-(1, NULL, 'aaaa', NULL, NULL, NULL, 'amit@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2013-06-30 14:39:56', NULL, '2013-06-30 08:39:56', NULL, 1);
+INSERT INTO `contacts` (`id`, `firstname`, `lastname`, `title`, `status`, `phone`, `email`, `account_name`, `position`, `m_street`, `m_city`, `m_state`, `m_zip`, `m_country`, `o_street`, `o_city`, `o_state`, `o_zip`, `o_country`, `created_at`, `created_by`, `updated_at`, `updated_by`, `owner`) VALUES
+(2, 'Amit', 'Kumar Paul', 'Mr', 1, '01721322184', 'amit@phase3solution.com', 1, NULL, '9/1', 'Dhaka', 'Mirpur', '1207', NULL, NULL, NULL, NULL, NULL, NULL, '2013-07-01 10:52:22', NULL, '2013-07-01 04:52:22', NULL, 1),
+(3, '', 'sss', '', 1, '', 'amit@ss.comaaa', 2, NULL, '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '2013-07-01 10:58:41', NULL, '2013-07-01 04:58:41', NULL, 1),
+(4, '', 'sss', '', 1, '', 'amit@ss.comaaaa', 2, NULL, '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '2013-07-01 11:00:37', NULL, '2013-07-01 05:00:37', NULL, 1),
+(5, '', 'pauld', '', 1, '', 'amit@ss.comd', 3, NULL, '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '2013-07-01 13:42:52', NULL, '2013-07-01 07:42:52', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -93,14 +142,16 @@ CREATE TABLE IF NOT EXISTS `leads` (
   `updated_by` int(11) DEFAULT NULL,
   `owner` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `leads`
 --
 
 INSERT INTO `leads` (`id`, `firstname`, `lastname`, `title`, `company`, `status`, `phone`, `email`, `ratting`, `website`, `street`, `city`, `state`, `zip`, `country`, `annual_revenue`, `employee_no`, `lead_source`, `description`, `created_at`, `updated_at`, `created_by`, `updated_by`, `owner`) VALUES
-(4, 'Amit', 'Kumar Paul', 'Mr', 'Phase3solution', 'Qualified', '01721322184', 'amit@phase3solution.com', 'Hot', NULL, '9/1', 'Dhaka', 'Mirpur', '1207', NULL, 100000, 15, 'Meeting', 'Very nice person', '2013-06-30 11:11:42', '2013-06-30 08:43:08', NULL, NULL, 1);
+(4, 'Amit', 'Kumar Paul', 'Mr', 'Phase3solution1', 'Qualified', '01721322184', 'amit@phase3solution.com', 'Hot', NULL, '9/1', 'Dhaka', 'Mirpur', '1207', NULL, 100000, 15, 'Meeting', 'Very nice person', '2013-06-30 11:11:42', '2013-07-01 02:45:27', NULL, NULL, 1),
+(5, '', 'sss', '', 'ssss', 'Qualified', '', 'amit@ss.comaaaa', '', NULL, '', '', '', '', NULL, NULL, NULL, '', '', '2013-07-01 10:54:13', '2013-07-01 05:00:37', NULL, NULL, 1),
+(6, '', 'pauld', '', 'asdas', 'Qualified', '', 'amit@ss.comd', '', NULL, '', '', '', '', NULL, NULL, NULL, '', '', '2013-07-01 12:44:52', '2013-07-01 07:42:52', NULL, NULL, 1);
 
 -- --------------------------------------------------------
 

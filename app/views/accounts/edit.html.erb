@@ -1,0 +1,42 @@
+<div class="span12" id="editAccount">
+  <div id="ajaxHandler">
+      <div id="crmAjaxProgress" class="progress progress-striped active" style="display: none;">
+          <div class="bar" style="width: 100%;"></div>
+      </div>
+      <div id="crmAjaxMessage" class="alert" style="display: none;">
+          Error!
+      </div>
+  </div>
+  <%= simple_form_for @account, :html => {:class => "form-horizontal"}  do |f| %>
+  <legend>Update account</legend>
+    <div class="span5">
+      <%= f.input :account_name, :label => (t "account.account_name") %>
+      <%= f.input :phone, :label =>(t "account.phone") %>
+      <%= f.input :fax, :label =>(t "account.fax") %>
+      <%= f.input :website, :label =>(t "account.website") %>
+      <%= f.input :discount, :label =>(t "account.client_discount") %>
+      <%= f.input :type, :label =>(t "account.type") %>
+      <%= f.input :industry, :label =>(t "account.industry") %>
+      <%= f.input :employees, :label =>(t "account.employees") %>
+      <%= f.input :annual_revenue, :label =>(t "account.annual_revenue") %>
+      <%= f.input :description, :as => :text, :input_html => { :cols => 50, :rows => 3 } %>
+    </div>
+    <div class="span5">
+      <%= f.input :status, :collection =>[["Select",""],["Active","1"],["Inactive","2"]], :selected => @account.status %>
+      <%= f.input :b_street, :as => :text, :label => (t "account.business_street"), :input_html => { :cols => 50, :rows => 3 } %>
+      <%= f.input :b_city, :label =>(t "account.business_city") %>
+      <%= f.input :b_state, :label =>(t "account.business_state") %>
+      <%= f.input :b_zip, :label =>(t "account.business_zip") %>
+
+      <%= f.input :s_street, :as => :text, :label => (t "account.shipping_street"), :input_html => { :cols => 50, :rows => 3 } %>
+      <%= f.input :s_city, :label =>(t "account.shipping_city") %>
+      <%= f.input :s_state, :label =>(t "account.shipping_state") %>
+      <%= f.input :s_zip, :label =>(t "account.shipping_zip") %>
+    </div>
+    <div class="form-actions span10" style="margin-left: 0px; width: 970px;">
+      <%= f.submit nil, :class => "btn btn-primary" %>
+      <a class="btn btn-small" href="<%= account_path(:id => @account.id) %>">Cancel</a>
+    </div>
+
+  <% end %>
+</div>
