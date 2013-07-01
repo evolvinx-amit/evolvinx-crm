@@ -9,6 +9,27 @@ class AccountsController < ApplicationController
     end
   end
 
+  def new
+    @account = Account.new
+  end
+
+  def create
+    @account = Account.new(params[:account])
+    @account[:owner] =  session[:userid]
+    respond_to do |format|
+      begin
+        if @account.save
+          format.json { render :json => {"success" => true, "message" => "Successfully created!"} }
+        else
+          format.json { render :json => {"error" => true, "exception" => @account.errors.full_messages.to_sentence} }
+        end
+      rescue =>e
+        @error= e.message
+        format.json { render :json => {"error" => true, "exception" => @error} }
+      end
+    end
+  end
+
   def show
     @title = t "account.t_view"
     @account = Account.find(params[:id])
@@ -30,6 +51,16 @@ class AccountsController < ApplicationController
         format.html { render :action => "edit" }
         format.xml { render :xml => @account.errors, :status => :unprocessable_entity }
       end
+    end
+  end
+
+  def destroy
+    @title = t "user.t_delete_account"
+    @account = Account.find(params[:id])
+    @account.destroy
+    respond_to do |format|
+      flash[:notice] = "Account deleted successfully!"
+      format.html { redirect_to(accounts_path) }
     end
   end
 
