@@ -1,6 +1,7 @@
 <script>
   $("#showContacts").live('click',function(e){
-    $.post('../account/7/get_contacts', {accid: 7}, function(data){
+    var _id = 10;
+    $.post('../account/'+_id+'/get_contacts', function(data){
         if(data.success){
             $('#alertContent').html("data.message");
             $('#alertModalLabel').html("data.title");

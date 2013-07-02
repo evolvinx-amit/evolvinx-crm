@@ -54,6 +54,14 @@ class AccountsController < ApplicationController
     end
   end
 
+  def get_contacts
+    @accId = params[:id]
+    @contacts = Contact.find(:all, :conditions => [ "account_name = ?", @accId ])
+    respond_to do |format|
+      format.json { render :json => {"success" => true, "message" => "Successfully created!"} }
+    end
+  end
+
   def destroy
     @title = t "account.t_delete_account"
     @account = Account.find(params[:id])
@@ -62,10 +70,6 @@ class AccountsController < ApplicationController
       flash[:notice] = "Account deleted successfully!"
       format.html { redirect_to(accounts_path) }
     end
-  end
-
-  def get_contacts
-    format.json { render :json => {"success" => true, "message" => "Ok ajax call"} }
   end
 
 end
