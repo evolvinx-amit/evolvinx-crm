@@ -1,5 +1,5 @@
 class Account < ActiveRecord::Base
-  has_many :contact
+  has_many :contact, :dependent => :delete_all, :foreign_key => 'account_name'
   belongs_to :user, :foreign_key => "owner"
   # Mass Assignment Protection
   attr_accessible :account_name, :status, :phone, :fax, :website, :discount, :type, :industry, :employees, :annual_revenue, :description,

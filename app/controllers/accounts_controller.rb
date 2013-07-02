@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-  before_filter :check_if_login
+  before_filter :authenticate_user
 
   def index
     @accounts = Account.find(:all)
@@ -36,12 +36,12 @@ class AccountsController < ApplicationController
   end
 
   def edit
-    @title = t "lead.t_edit_account"
+    @title = t "account.t_edit_account"
     @account = Account.find(params[:id])
   end
 
   def update
-    @title = t "user.t_update_account"
+    @title = t "account.t_update_account"
     @account = Account.find(params[:id])
     respond_to do |format|
       if @account.update_attributes(params[:account])
@@ -55,7 +55,7 @@ class AccountsController < ApplicationController
   end
 
   def destroy
-    @title = t "user.t_delete_account"
+    @title = t "account.t_delete_account"
     @account = Account.find(params[:id])
     @account.destroy
     respond_to do |format|
@@ -64,12 +64,8 @@ class AccountsController < ApplicationController
     end
   end
 
-  protected
-  def check_if_login
-    if session[:userrole].present?
-
-    else
-      redirect_to(login_path)
-    end
+  def get_contacts
+    format.json { render :json => {"success" => true, "message" => "Ok ajax call"} }
   end
+
 end

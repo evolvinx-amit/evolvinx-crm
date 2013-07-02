@@ -7,6 +7,7 @@ gem 'rails', '3.2.13'
 
 gem 'mysql2'
 gem 'simple_form'
+gem 'country_select'
 
 
 # Gems used only for assets and not required
@@ -22,6 +23,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'bcrypt-ruby', :require=>'bcrypt'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

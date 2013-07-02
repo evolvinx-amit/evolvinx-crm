@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :check_if_login
+  before_filter :authenticate_user
   def new
     @user = User.new
   end
@@ -14,9 +14,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    @user[:password] =  Digest::MD5.hexdigest(@user[:password])
     respond_to do |format|
       begin
+        update_authentication_token(@user, nil)
         if @user.save
           format.json { render :json => {"success" => true, "message" => "Successfully created!"} }
         else
@@ -29,13 +29,17 @@ class UsersController < ApplicationController
     end
   end
 
-  protected
-
-  def check_if_login
-    if session[:userrole].present?
-      
+  
+  private
+  
+  def update_authentication_token(user, remember_me)
+    if remember_me == 1
+      auth_token = SecureRandom.urlsafe_base64
+      user.authentication_token = auth_token
+      cookies.permanent[:auth_token] = auth_token
     else
-      redirect_to(login_path)
+      user.authentication_token = nil
+      cookies.permanent[:auth_token] = nil
     end
   end
   

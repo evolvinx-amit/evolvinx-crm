@@ -36,7 +36,13 @@
               </td>
               <td><%= contact.lastname.strip %></td>
               <td><%= contact.email.strip %></td>
-              <td style="text-transform:capitalize;"><%= contact.account.account_name %></td>
+              <td style="text-transform:capitalize;">
+                <% if !contact.account_name.nil? %>
+                  <%= contact.account.account_name %>
+                <%  else %>
+                  N/A
+                <% end %>
+              </td>
               <td>
                 <% if contact.phone.strip != "" %>
                   <%= contact.phone.strip %>
@@ -53,8 +59,8 @@
               </td>
               <td style="text-transform:capitalize;"><%= contact.user.username %></td>
               <td style="width: 275px;">
-                <a class="btn btn-small" href="#">Details</a>
-                <a class="btn btn-small" href="#">Edit</a>
+                <a class="btn btn-small" href="<%= contact_path(:id => contact.id) %>">Details</a>
+                <a class="btn btn-small" href="<%= edit_contact_path(:id => contact.id) %>">Edit</a>
                 <%= link_to 'Delete', contact,:confirm => 'Are you sure?', :method => :delete, :class => "btn btn-small"%>
               </td>
             </tr>

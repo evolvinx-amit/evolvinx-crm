@@ -16,6 +16,7 @@ EvolvinxCrm::Application.routes.draw do
   match '/login' => 'user_sessions#new', :as => :login
   match '/logout' => 'user_sessions#destroy', :as => :logout
   match 'lead/:id/convert' => 'leads#convert_lead', :as => :convert_lead
+  match 'account/:id/get_contacts' => 'accounts#get_contacts', :as => :get_contacts, :via => [:post]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

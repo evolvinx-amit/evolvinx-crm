@@ -1,5 +1,5 @@
 class LeadsController < ApplicationController
-  before_filter :check_if_login
+  before_filter :authenticate_user
 
   def new
     @lead = Lead.new
@@ -124,14 +124,4 @@ class LeadsController < ApplicationController
     end
   end
 
-
-  
-  protected
-  def check_if_login
-    if session[:userrole].present?
-
-    else
-      redirect_to(login_path)
-    end
-  end
 end

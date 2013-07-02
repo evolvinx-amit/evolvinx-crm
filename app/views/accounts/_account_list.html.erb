@@ -1,3 +1,18 @@
+<script>
+  $("#showContacts").live('click',function(e){
+    $.post('../account/7/get_contacts', {accid: 7}, function(data){
+        if(data.success){
+            $('#alertContent').html("data.message");
+            $('#alertModalLabel').html("data.title");
+            $('#alertModal').modal('show');
+        } else {
+          alert("not ok");
+        }
+    })
+    return false;
+  });
+</script>
+
 <div class="row-fluid">
   <div class="span12">
     <p class="tab-title">All Accounts</p>
@@ -55,15 +70,31 @@
                   Inactive
                 <% end %>
               </td>
-              <td style="text-transform:capitalize;"><%= account.user.username %></td>
+              <td id="accName" style="text-transform:capitalize;"><%= account.user.username %></td>
               <td style="width: 275px;">
                 <a class="btn btn-small" href="<%= account_path(:id => account.id) %>">Details</a>
                 <a class="btn btn-small" href="<%= edit_account_path(:id => account.id) %>">Edit</a>
-                <%= link_to 'Delete', account,:confirm => 'Are you sure?', :method => :delete, :class => "btn btn-small"%>
+                <a id="showContacts" class="btn btn-small" href="<%= edit_account_path(:id => account.id) %>" onclick="return false;">Contacts</a>
+                <%= link_to 'Delete', account,:confirm => 'Are you sure?', :method => :delete, :class => "btn btn-small" %>
               </td>
             </tr>
           <% end %>
         </tbody>
       </table>
+    </div>
+  </div>
+
+
+
+  <div id="alertModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel" aria-hidden="true" data-backdrop="false">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <h3 id="alertModalLabel" class="nts-modal-title"></h3>
+    </div>
+    <div class="modal-body">
+      <p id="alertContent"></p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">OK</button>
     </div>
   </div>

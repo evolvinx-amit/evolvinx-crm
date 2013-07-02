@@ -1,0 +1,150 @@
+<div id="contact_info">
+  <h3>Contact Details</h3>
+  <table>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "contact.title" %>:</strong>
+      </td>
+      <td align="left" style="text-transform: capitalize;">
+        <%= @contact.title %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "contact.first_name" %>:</strong>
+      </td>
+      <td align="left">
+        <%= @contact.firstname %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "contact.last_name" %>:</strong>
+      </td>
+      <td align="left">
+        <%= @contact.lastname %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "contact.email" %>:</strong>
+      </td>
+      <td align="left">
+        <%= @contact.email %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "contact.phone" %>:</strong>
+      </td>
+      <td align="left">
+        <%= @contact.phone %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "contact.account_name" %>:</strong>
+      </td>
+      <td align="left">
+        <% if !@contact.account_name.nil? %>
+        <%= @contact.account.account_name %>
+        <%  else %>
+        N/A
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "contact.position" %>:</strong>
+      </td>
+      <td align="left">
+        <%= @contact.position %>
+      </td>
+    </tr>
+    
+    
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "contact.mailing_address" %>:</strong>
+      </td>
+      <td align="left">
+         <% if !@contact.m_street.nil?  %>
+            <%= @contact.m_street %>
+         <% end %>
+         <% if !@contact.m_city.nil? %>
+            <%= @contact.m_city %>
+         <% end %>
+         <% if !@contact.m_state.nil? %>
+            <%= @contact.m_state %>
+         <% end %>
+         <% if !@contact.m_zip.nil? %>
+            <%= @contact.m_zip %>
+         <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "contact.other_address" %>:</strong>
+      </td>
+      <td align="left">
+         <% if !@contact.o_street.nil? %>
+            <%= @contact.o_street %>
+         <% end %>
+         <% if !@contact.o_city.nil? %>
+            <%= @contact.o_city %>
+         <% end %>
+         <% if !@contact.o_state.nil? %>
+            <%= @contact.o_state %>
+         <% end %>
+         <% if !@contact.o_zip.nil? %>
+            <%= @contact.o_zip %>
+         <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "contact.status" %>:</strong>
+      </td>
+      <td align="left">
+         <% if @contact.status == 1 %>
+           Active
+         <% else %>
+           Inactive
+         <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "contact.created_at" %>:</strong>
+      </td>
+      <td align="left">
+        <%= @contact.created_at.to_formatted_s(:db) %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "contact.updated_at" %>:</strong>
+      </td>
+      <td align="left">
+        <%= @contact.updated_at.to_formatted_s(:db) %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "contact.owner" %>:</strong>
+      </td>
+      <td align="left">
+        <%= @contact.user.username %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <a class="btn btn-small" href="<%= edit_contact_path(:id => @contact.id) %>">Edit</a>
+        <%= link_to 'Delete', @contact,:confirm => 'Are you sure?', :method => :delete, :class => "btn btn-small"%>
+        <a class="btn btn-small" href="<%= contacts_path %>">Cancel</a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="clear"></div>
+
