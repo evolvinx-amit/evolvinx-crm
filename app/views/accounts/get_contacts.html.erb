@@ -1,7 +1,7 @@
 <div class="row-fluid">
   <div class="span12">
-    <p class="tab-title">All Contacts</p>
-    <p class="create-new-title"><%= link_to "Create new contact", new_contact_path %></p>
+    <p class="tab-title"></p>
+    <p class="create-new-title"><%= link_to "Create new contact", :controller => "contacts", :action => "new", :accid => params[:id] %></p>
     <table class="table table-bordered table-hover table table-condensed">
       <thead>
         <tr>

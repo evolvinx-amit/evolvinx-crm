@@ -16,7 +16,7 @@
       <%= f.input :lastname, :label => (t "contact.last_name") %>      
       <%= f.input :phone, :label =>(t "contact.phone") %>
       <%= f.input :email, :label =>(t "contact.email") %>
-      <%= f.association :account, collection: @accounts.map{ |account| [account.account_name, account.id]}, :include_blank => "Select Account", :selected => "" %>
+      <%= f.association :account, collection: @accounts.map{ |account| [account.account_name, account.id]}, :include_blank => "Select Account", :selected => @contact.account_name %>
       <%= f.input :position, :label =>(t "contact.position") %>
       <%= f.input :status, :collection =>[["Select",""],["Active","1"],["Inactive","2"]], :selected => "1" %>
     </div>

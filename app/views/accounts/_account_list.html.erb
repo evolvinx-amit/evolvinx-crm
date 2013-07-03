@@ -1,15 +1,16 @@
 <script>
-  $("#showContacts").live('click',function(e){
-    var _id = 10;
-    $.post('../account/'+_id+'/get_contacts', function(data){
-        if(data.success){
-            $('#alertContent').html("data.message");
-            $('#alertModalLabel').html("data.title");
-            $('#alertModal').modal('show');
-        } else {
-          alert("not ok");
+  $(".showContacts").live('click',function(e){
+    $('#alertContent').html("");
+    var _id = $(this).attr("id");
+    $.ajax({
+        url: '../account/'+_id+'/get_contacts',
+        cache: false,
+        success: function(html){
+          $('#alertContent').append(html);
+          $('#alertModalLabel').html("Contacts List");
+          $('#alertModal').modal('show');
         }
-    })
+    });
     return false;
   });
 </script>
@@ -34,7 +35,7 @@
       <tbody>
         <% for account in @accounts do %>
             <tr class="<%= cycle :odd, :even %>">
-              <td><%= account.id %></td>
+              <td><%= link_to account.id, account %></td>
               <td style="text-transform:capitalize;"><%= account.account_name %></td>
               <td style="text-transform:capitalize;">
                 <% if account.type.nil? %>
@@ -75,7 +76,7 @@
               <td style="width: 275px;">
                 <a class="btn btn-small" href="<%= account_path(:id => account.id) %>">Details</a>
                 <a class="btn btn-small" href="<%= edit_account_path(:id => account.id) %>">Edit</a>
-                <a id="showContacts" class="btn btn-small" href="<%= edit_account_path(:id => account.id) %>" onclick="return false;">Contacts</a>
+                <a id="<%= account.id %>" class="btn btn-small showContacts" href="<%= edit_account_path(:id => account.id) %>" onclick="return false;">Contacts</a>
                 <%= link_to 'Delete', account,:confirm => 'Are you sure?', :method => :delete, :class => "btn btn-small" %>
               </td>
             </tr>
@@ -87,7 +88,7 @@
 
 
 
-  <div id="alertModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel" aria-hidden="true" data-backdrop="false">
+  <div id="alertModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel" aria-hidden="true" data-backdrop="false" style="width: 80%;left: 9%; margin-left: auto;">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
       <h3 id="alertModalLabel" class="nts-modal-title"></h3>

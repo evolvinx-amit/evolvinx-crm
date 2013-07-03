@@ -7,10 +7,7 @@ class UserSessionsController < ApplicationController
         update_authentication_token(user, params[:remember_me])
         user.last_logged_at = DateTime.now
         user.save
-        session[:username] = user.username
-        session[:useremail] = user.email
         session[:userid] = user.id
-        session[:userrole] = user.role_id
         redirect_to(home_index_path)
       else
         flash.now[:error] = 'Unknown user.  Please check your username and password.'

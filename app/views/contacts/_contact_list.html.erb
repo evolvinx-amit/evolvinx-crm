@@ -19,7 +19,7 @@
       <tbody>
         <% for contact in @contacts do %>
             <tr class="<%= cycle :odd, :even %>">
-              <td><%= contact.id %></td>
+              <td><%= link_to contact.id, contact %></td>
               <td style="text-transform:capitalize;">
                 <% if contact.title.strip != "" %>
                   <%= contact.title.strip %>

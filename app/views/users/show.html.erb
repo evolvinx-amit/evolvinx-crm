@@ -1,0 +1,124 @@
+<div id="contact_info">
+  <h3>user Details</h3>
+  <table>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "user.username" %>:</strong>
+      </td>
+      <td align="left">
+        <%= @user.username %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "user.email" %>:</strong>
+      </td>
+      <td align="left">
+        <%= @user.email %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "user.role" %>:</strong>
+      </td>
+      <td align="left" style="text-transform: capitalize;">
+        <%= @user.role.name %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "user.name" %>:</strong>
+      </td>
+      <td align="left">
+        <% if @user.name.nil? %>
+          N/A
+        <% else %>
+          <%= @user.name %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "user.phone" %>:</strong>
+      </td>
+      <td align="left">
+        <% if @user.phone.nil? %>
+          N/A
+        <% else %>
+          <%= @user.phone %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "user.fax" %>:</strong>
+      </td>
+      <td align="left">
+        <% if @user.fax.nil? %>
+          N/A
+        <% else %>
+          <%= @user.fax %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "user.status" %>:</strong>
+      </td>
+      <td align="left">
+        <% if @user.status == 1 %>
+          Active
+        <% else %>
+          Inactive
+        <% end %>
+      </td>
+    </tr>
+    
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "user.address" %>:</strong>
+      </td>
+      <td align="left">
+         <% if !@user.address.nil?  %>
+            <%= @user.address %>
+         <% end %>
+         <% if !@user.city.nil? %>
+            <%= @user.city %>
+         <% end %>
+         <% if !@user.state.nil? %>
+            <%= @user.state %>
+         <% end %>
+         <% if !@user.zip.nil? %>
+            <%= @user.zip %>
+         <% end %>
+      </td>
+    </tr>
+    
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "user.created_at" %>:</strong>
+      </td>
+      <td align="left">
+        <%= @user.created_at.to_formatted_s(:db) %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <strong><%= t "user.updated_at" %>:</strong>
+      </td>
+      <td align="left">
+        <%= @user.updated_at.to_formatted_s(:db) %>
+      </td>
+    </tr>
+    
+    <tr>
+      <td colspan="3">
+        <a class="btn btn-small" href="<%= edit_user_path(:id => @user.id) %>">Edit</a>
+        <%= link_to 'Delete', @user,:confirm => 'Are you sure?', :method => :delete, :class => "btn btn-small"%>
+        <a class="btn btn-small" href="<%= users_path %>">Cancel</a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="clear"></div>
+

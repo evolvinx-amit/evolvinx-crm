@@ -19,7 +19,7 @@
       <tbody>
         <% for lead in @leads do %>
             <tr class="<%= cycle :odd, :even %>">
-              <td><%= lead.id %></td>
+              <td><%= link_to lead.id, lead %></td>
               <td style="text-transform:capitalize;">
                 <% if lead.title.strip != "" %>
                   <%= lead.title.strip %>

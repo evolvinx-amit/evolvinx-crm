@@ -57,9 +57,7 @@ class AccountsController < ApplicationController
   def get_contacts
     @accId = params[:id]
     @contacts = Contact.find(:all, :conditions => [ "account_name = ?", @accId ])
-    respond_to do |format|
-      format.json { render :json => {"success" => true, "message" => "Successfully created!"} }
-    end
+    render :layout => false
   end
 
   def destroy

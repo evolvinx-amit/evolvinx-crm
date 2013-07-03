@@ -5,7 +5,7 @@
         <ul class="nav">
           <li class="<%= 'active' if(controller.controller_name == "home") %>"><%= link_to "Home", home_index_path %></li>
           <li><a href="#">Dashboard</a></li>
-          <li class="<%= 'active' if(controller.controller_name == "leads") %>"><%= link_to "Lead", leads_path %></li>
+          <li class="<%= 'active' if(controller.controller_name == "leads") %>"><%= link_to "Leads", leads_path %></li>
           <li class="<%= 'active' if(controller.controller_name == "contacts") %>"><%= link_to "Contacts", contacts_path %></li>
           <li class="<%= 'active' if(controller.controller_name == "accounts") %>"><%= link_to "Accounts", accounts_path %></li>
           <% if(current_user.role_id != 3) %>

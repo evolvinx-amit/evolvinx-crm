@@ -12,6 +12,7 @@ class ContactsController < ApplicationController
   def new
     @accounts = Account.find(:all, :conditions => [ "status = ?", 1 ])
     @contact = Contact.new
+    @contact.account_name = params[:accid]
   end
 
   def create

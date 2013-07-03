@@ -1,0 +1,26 @@
+<div class="span12" id="editUser">
+  <%= simple_form_for @user, :html => { :class => "form-horizontal" }  do |f| %>
+  <legend>Update Profile</legend>
+    <div class="span5">
+      <%= f.input :username, :label => (t "user.username") %>
+      <%= f.input :name, :label =>(t "user.name") %>
+      <%= f.input :email, :label => (t "user.email") %>
+      <%= f.input :role_id, :collection =>[["Admin","1"],["Recruiter","2"],["Sales","3"]], :selected => @user.role_id %>
+      <%= f.input :status, :collection =>[["Active","1"],["Inactive","2"]], :selected => @user.status %>
+    </div>
+  <div class="span5">
+    <%= f.input :address, :as => :text, :label => (t "user.street"), :input_html => { :cols => 50, :rows => 3 } %>
+      <%= f.input :city, :label =>(t "user.city") %>
+      <%= f.input :state, :label =>(t "user.state") %>
+      <%= f.input :zip, :label =>(t "user.zip") %>
+      <%= f.input :phone, :label => (t "user.phone") %>
+      <%= f.input :fax, :label => (t "user.fax") %>
+  </div>
+
+    <div class="form-actions span10" style="margin-left: 0px; width: 970px;">
+      <%= f.submit nil, :class => "btn btn-primary" %>
+      <%= link_to t("global.cancel"), users_path, :class => "btn" %>
+    </div>
+
+  <% end %>
+</div>

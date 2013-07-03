@@ -11,7 +11,7 @@
           <th><%= t "global.email" %></th>
           <th><%= t "global.role" %></th>
           <th><%= t "global.phone" %></th>
-          <th><%= t "global.active" %></th>
+          <th><%= t "global.status" %></th>
         </tr>
       </thead>
       <tbody>
@@ -30,15 +30,16 @@
                 <% end %>
               </td>
               <td>
-                <% if user.active %>
+                <% if user.status == 1 %>
                   Active
                 <% else %>
                   Inactive
                 <% end %>
               </td>
               <td>
-                <a class="btn btn-small" href="#">Edit</a>
-                <a class="btn btn-small" href="#">Delete</a>
+                <a class="btn btn-small" href="<%= user_path(:id => user.id) %>">Details</a>
+                <a class="btn btn-small" href="<%= edit_user_path(:id => user.id) %>">Edit</a>
+                <%= link_to 'Delete', user,:confirm => 'Are you sure?', :method => :delete, :class => "btn btn-small"%>
               </td>
             </tr>
           <% end %>

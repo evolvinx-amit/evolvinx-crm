@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 02, 2013 at 02:54 PM
+-- Generation Time: Jul 03, 2013 at 02:12 PM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -55,15 +55,14 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `updated_by` int(11) DEFAULT NULL,
   `owner` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `accounts`
 --
 
 INSERT INTO `accounts` (`id`, `account_name`, `status`, `phone`, `fax`, `website`, `discount`, `type`, `industry`, `employees`, `annual_revenue`, `description`, `b_street`, `b_city`, `b_state`, `b_zip`, `b_country`, `s_street`, `s_city`, `s_state`, `s_zip`, `s_country`, `created_at`, `created_by`, `updated_at`, `updated_by`, `owner`) VALUES
-(7, 'Phase3solution1', 1, '', '', '', NULL, '', '', NULL, NULL, '', '', '', '', '', NULL, '', '', '', '', NULL, '2013-07-01 14:03:33', NULL, '2013-07-01 08:03:33', NULL, 1),
-(9, 'zSDvcsdv', 2, '', '', '', NULL, '', '', NULL, NULL, '', '', '', '', '', NULL, '', '', '', '', NULL, '2013-07-02 11:42:06', NULL, '2013-07-02 05:42:23', NULL, 1);
+(10, 'evolvinx', 1, '01721322184', NULL, NULL, NULL, NULL, NULL, 12, 1000, 'Very good person', '1/1', 'mirpur', 'dhaka', '1201', NULL, NULL, NULL, NULL, NULL, NULL, '2013-07-03 11:23:06', NULL, '2013-07-03 05:23:06', NULL, 22);
 
 -- --------------------------------------------------------
 
@@ -104,9 +103,8 @@ CREATE TABLE IF NOT EXISTS `contacts` (
 --
 
 INSERT INTO `contacts` (`id`, `firstname`, `lastname`, `title`, `status`, `phone`, `email`, `account_name`, `position`, `m_street`, `m_city`, `m_state`, `m_zip`, `m_country`, `o_street`, `o_city`, `o_state`, `o_zip`, `o_country`, `created_at`, `created_by`, `updated_at`, `updated_by`, `owner`) VALUES
-(2, 'Amitw', 'Kumar Paul', 'Mr', 1, '01721322184', 'amit@phase3solution.com', 7, '', '9/1', 'Dhaka', 'Mirpur', '1207', NULL, '', '', '', '', NULL, '2013-07-01 10:52:22', NULL, '2013-07-02 06:04:02', NULL, 1),
-(3, '', 'asdfsad', '', 1, '', 'amit@ss.comaaa', NULL, '', '', '', '', '', NULL, '', '', '', '', NULL, '2013-07-01 10:58:41', NULL, '2013-07-02 06:10:46', NULL, 1),
-(5, '', 'pauld', '', 1, '', 'amit@ss.comd', 7, NULL, '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '2013-07-01 13:42:52', NULL, '2013-07-01 14:03:46', NULL, 1);
+(6, 'amit', 'paul', 'Mr', 1, '01721322184', 'amit@evolvinx.com', 10, NULL, '1/1', 'mirpur', 'dhaka', '1201', NULL, NULL, NULL, NULL, NULL, NULL, '2013-07-03 11:23:06', NULL, '2013-07-03 05:23:06', NULL, 22),
+(7, 'Moni', 'Zaman', 'Mr', 1, '017646667576', 'moni@gmail.com', 10, 'Developer', '', '', '', '', NULL, '', '', '', '', NULL, '2013-07-03 11:24:37', NULL, '2013-07-03 05:24:37', NULL, 22);
 
 -- --------------------------------------------------------
 
@@ -140,17 +138,14 @@ CREATE TABLE IF NOT EXISTS `leads` (
   `updated_by` int(11) DEFAULT NULL,
   `owner` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `leads`
 --
 
 INSERT INTO `leads` (`id`, `firstname`, `lastname`, `title`, `company`, `status`, `phone`, `email`, `ratting`, `website`, `street`, `city`, `state`, `zip`, `country`, `annual_revenue`, `employee_no`, `lead_source`, `description`, `created_at`, `updated_at`, `created_by`, `updated_by`, `owner`) VALUES
-(4, 'Amit', 'Kumar Paul', 'Mr', 'Phase3solution1', 'Qualified', '01721322184', 'amit@phase3solution.com', 'Hot', NULL, '9/1', 'Dhaka', 'Mirpur', '1207', NULL, 100000, 15, 'Meeting', 'Very nice person', '2013-06-30 11:11:42', '2013-07-01 02:45:27', NULL, NULL, 1),
-(5, '', 'sss', '', 'ssss', 'Qualified', '', 'amit@ss.comaaaa', '', NULL, '', '', '', '', NULL, NULL, NULL, '', '', '2013-07-01 10:54:13', '2013-07-01 05:00:37', NULL, NULL, 1),
-(6, '', 'pauld', '', 'asdas', 'Qualified', '', 'amit@ss.comd', '', NULL, '', '', '', '', NULL, NULL, NULL, '', '', '2013-07-01 12:44:52', '2013-07-01 07:42:52', NULL, NULL, 1),
-(7, '', 'awefasd', '', 'asdfasf', 'Qualified', '', 'amit@ss.comsss', '', NULL, '', '', '', '', NULL, NULL, NULL, '', '', '2013-07-02 10:44:29', '2013-07-02 04:44:33', NULL, NULL, 1);
+(9, 'amit', 'paul', 'Mr', 'evolvinx', 'Qualified', '01721322184', 'amit@evolvinx.com', 'Hot', NULL, '1/1', 'mirpur', 'dhaka', '1201', NULL, 1000, 12, 'Meeting', 'Very good person', '2013-07-03 11:22:43', '2013-07-03 05:23:06', NULL, NULL, 22);
 
 -- --------------------------------------------------------
 
@@ -211,20 +206,18 @@ CREATE TABLE IF NOT EXISTS `users` (
   `zip` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
   `fax` varchar(255) DEFAULT NULL,
-  `active` tinyint(1) DEFAULT '1',
+  `status` int(11) NOT NULL DEFAULT '1',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `password_hash`, `password_salt`, `authentication_token`, `password_reset_token`, `last_logged_at`, `role_id`, `name`, `address`, `city`, `state`, `zip`, `phone`, `fax`, `active`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@example.com', '$2a$10$N2MVsvSSYnG3n/TH3b/S0elVwFkzeqooam5H7X7jj39bCI87s2Bly', '$2a$10$N2MVsvSSYnG3n/TH3b/S0e', NULL, NULL, '0000-00-00 00:00:00', 1, 'Company Admin', NULL, NULL, NULL, NULL, NULL, NULL, 1, '2013-06-18 12:03:03', '2013-06-18 19:49:11'),
-(19, 'recruiter', 'recruiter@gmail.com', '$2a$10$SHSiMmYeBsgcE6JUBtZHX.CgPwLhr5QBsTKF5v55ZreESTpiQbrqS', '$2a$10$SHSiMmYeBsgcE6JUBtZHX.', NULL, NULL, NULL, 2, 'recruiter', NULL, NULL, NULL, NULL, NULL, NULL, 1, '2013-07-02 10:29:32', '2013-07-02 10:29:32'),
-(20, 'sales', 'sales@gmail.com', '$2a$10$A.3U.nCj7dbRkXZLDb9kq.5HUbrqFptqykZdJv6eKShDIwjosWIvq', '$2a$10$A.3U.nCj7dbRkXZLDb9kq.', NULL, NULL, NULL, 3, 'sales', NULL, NULL, NULL, NULL, NULL, NULL, 1, '2013-07-02 10:32:57', '2013-07-02 10:32:57');
+INSERT INTO `users` (`id`, `username`, `email`, `password_hash`, `password_salt`, `authentication_token`, `password_reset_token`, `last_logged_at`, `role_id`, `name`, `address`, `city`, `state`, `zip`, `phone`, `fax`, `status`, `created_at`, `updated_at`) VALUES
+(22, 'admin', 'admin@gmail.com', '$2a$10$SHSiMmYeBsgcE6JUBtZHX.CgPwLhr5QBsTKF5v55ZreESTpiQbrqS', '$2a$10$SHSiMmYeBsgcE6JUBtZHX.', NULL, NULL, '2013-07-03 11:07:01', 1, 'admin', '', '', '', '', '', '', 1, '2013-07-02 10:29:32', '2013-07-03 11:07:01');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
