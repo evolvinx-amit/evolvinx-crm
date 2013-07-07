@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 03, 2013 at 02:12 PM
+-- Generation Time: Jul 07, 2013 at 11:55 AM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -217,7 +217,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password_hash`, `password_salt`, `authentication_token`, `password_reset_token`, `last_logged_at`, `role_id`, `name`, `address`, `city`, `state`, `zip`, `phone`, `fax`, `status`, `created_at`, `updated_at`) VALUES
-(22, 'admin', 'admin@gmail.com', '$2a$10$SHSiMmYeBsgcE6JUBtZHX.CgPwLhr5QBsTKF5v55ZreESTpiQbrqS', '$2a$10$SHSiMmYeBsgcE6JUBtZHX.', NULL, NULL, '2013-07-03 11:07:01', 1, 'admin', '', '', '', '', '', '', 1, '2013-07-02 10:29:32', '2013-07-03 11:07:01');
+(22, 'admin', 'admin@gmail.com', '$2a$10$SHSiMmYeBsgcE6JUBtZHX.CgPwLhr5QBsTKF5v55ZreESTpiQbrqS', '$2a$10$SHSiMmYeBsgcE6JUBtZHX.', NULL, NULL, '2013-07-06 09:45:59', 1, 'admin', '', '', '', '', '', '', 1, '2013-07-02 10:29:32', '2013-07-06 09:45:59');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
